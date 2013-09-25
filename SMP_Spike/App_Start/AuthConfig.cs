@@ -25,8 +25,8 @@ namespace SMP_Spike
             //    consumerSecret: "");
 
             OAuthWebSecurity.RegisterFacebookClient(
-                appId: "413826368722699",
-                appSecret: "1d427d3e610632b9a75097afa5470646");
+              appId: "[ENTER_FACEBOOK_APP_ID_HERE]",
+              appSecret: "[ENTER_APP_SECRET_HERE]");
 
             //IAuthenticationClient client = new OpenIdClient();
             //OAuthWebSecurity.RegisterClient();

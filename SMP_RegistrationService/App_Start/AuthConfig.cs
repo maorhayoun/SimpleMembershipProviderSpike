@@ -18,13 +18,10 @@ namespace SMP_RegistrationService
             //    consumerKey: "your Twitter consumer key",
             //    consumerSecret: "your Twitter consumer secret");
 
-            //OpenAuth.AuthenticationClients.AddFacebook(
-            //    appId: "413826368722699",
-            //    appSecret: "1d427d3e610632b9a75097afa5470646");
 
             OAuthWebSecurity.RegisterFacebookClient(
-              appId: "413826368722699",
-              appSecret: "1d427d3e610632b9a75097afa5470646");
+              appId: "[ENTER_FACEBOOK_APP_ID_HERE]",
+              appSecret: "[ENTER_APP_SECRET_HERE]");
 
             //OpenAuth.AuthenticationClients.AddMicrosoft(
             //    clientId: "your Microsoft account client id",
