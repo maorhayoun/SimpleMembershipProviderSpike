@@ -1,0 +1,447 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Conduit.Libraries.Logging</name>
+    </assembly>
+    <members>
+        <member name="T:Conduit.Libraries.Logging.Context.HttpContextProperties">
+            <summary>
+            An <see cref="T:Conduit.Libraries.Logging.Context.IContextProperties"/> manager for an HTTP Context (Asp.net)
+            </summary>
+        </member>
+        <member name="T:Conduit.Libraries.Logging.Context.IContextProperties">
+            <summary>
+            Define contract for context map properties
+            </summary>
+        </member>
+        <member name="M:Conduit.Libraries.Logging.Context.IContextProperties.Clear">
+            <summary>
+            Clear all properties
+            </summary>
+        </member>
+        <member name="M:Conduit.Libraries.Logging.Context.IContextProperties.Remove(System.String)">
+            <summary>
+            Remove a property
+            </summary>
+            <param name="key">the key for the entry to remove</param>
+        </member>
+        <member name="P:Conduit.Libraries.Logging.Context.IContextProperties.Item(System.String)">
+            <summary>
+            Gets or sets the value of a property
+            </summary>
+            <value>
+            The value for the property with the specified key
+            </value>
+        </member>
+        <member name="M:Conduit.Libraries.Logging.Context.HttpContextProperties.#ctor">
+            <summary>
+            Internal constructor
+            </summary>
+            <remarks>
+            <para>
+            Initializes a new instance of the <see cref="T:log4net.Util.ThreadContextProperties" /> class.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:Conduit.Libraries.Logging.Context.HttpContextProperties.Clear">
+            <summary>
+            Clear all properties
+            </summary>
+        </member>
+        <member name="M:Conduit.Libraries.Logging.Context.HttpContextProperties.Remove(System.String)">
+            <summary>
+            Remove a property
+            </summary>
+            <param name="key">the key for the entry to remove</param>
+        </member>
+        <member name="P:Conduit.Libraries.Logging.Context.HttpContextProperties.Current">
+            <summary>
+            returns the current http context properties
+            </summary>
+        </member>
+        <member name="P:Conduit.Libraries.Logging.Context.HttpContextProperties.Item(System.String)">
+            <summary>
+            Gets or sets the value of a property
+            </summary>
+            <value>
+            The value for the property with the specified key
+            </value>
+        </member>
+        <member name="T:Conduit.Libraries.Logging.LogFacade">
+            <summary>
+            Interface is use by application to log messages into logging system
+            
+            This class contains methods for logging at different levels and also has
+            properties for determining if those logging levels are enabled in the current
+            configuration.
+            
+            </summary>
+            <remarks>
+            Levels hierarchy: 
+            
+            Highest
+            -------
+            FATAL
+            ERROR
+            WARN
+            INFO
+            DEBUG
+            -------
+            Lowest
+            </remarks>
+        </member>
+        <member name="M:Conduit.Libraries.Logging.LogFacade.Debug(System.Exception)">
+            <summary>
+            Log a message with the Common.Logging.LogLevel.Debug level.
+            </summary>
+            <param name="exception">The exception to log, including its stack trace.</param>
+        </member>
+        <member name="M:Conduit.Libraries.Logging.LogFacade.Debug(System.String,System.String)">
+            <summary>
+            Log a message with the Common.Logging.LogLevel.Debug level.
+            </summary>
+            <param name="title">The title to log</param>
+            <param name="message">The message to log</param>
+        </member>
+        <member name="M:Conduit.Libraries.Logging.LogFacade.Debug(System.String,System.Exception)">
+            <summary>
+            Log a message with the Common.Logging.LogLevel.Debug level.
+            </summary>
+            <param name="title">The title to log</param>
+            <param name="exception">The exception to log, including its stack trace.</param>
+        </member>
+        <member name="M:Conduit.Libraries.Logging.LogFacade.DebugFormat(System.String,System.Object[])">
+            <summary>
+            Log a message with the Common.Logging.LogLevel.Debug level.
+            </summary>
+            <param name="format">The format of the message object to log.System.String.Format(System.String,System.Object[])</param>
+            <param name="args">the list of format arguments</param>
+        </member>
+        <member name="M:Conduit.Libraries.Logging.LogFacade.DebugFormat(System.String,System.Exception,System.Object[])">
+            <summary>
+            Log a message with the Common.Logging.LogLevel.Debug level.
+            </summary>
+            <param name="format">The format of the message object to log.System.String.Format(System.String,System.Object[])</param>
+            <param name="exception">The exception to log.</param>
+            <param name="args">the list of format arguments</param>
+        </member>
+        <member name="M:Conduit.Libraries.Logging.LogFacade.Warn(System.Exception)">
+            <summary>
+             Log a message with the Common.Logging.LogLevel.Warn level.
+            </summary>
+            <param name="exception">The exception to log.</param>
+        </member>
+        <member name="M:Conduit.Libraries.Logging.LogFacade.Warn(System.String,System.String)">
+            <summary>
+             Log a message with the Common.Logging.LogLevel.Warn level.
+            </summary>
+            <param name="title">The title to log.</param>
+            <param name="message">The message to log.</param>
+        </member>
+        <member name="M:Conduit.Libraries.Logging.LogFacade.Warn(System.String,System.Exception)">
+            <summary>
+             Log a message with the Common.Logging.LogLevel.Warn level.
+            </summary>
+            <param name="title">The title to log.</param>
+            <param name="exception">The Exception to log.</param>
+        </member>
+        <member name="M:Conduit.Libraries.Logging.LogFacade.WarnFormat(System.String,System.Object[])">
+            <summary>
+            Log a message with the Common.Logging.LogLevel.Warn level.
+            </summary>
+            <param name="format">The format of the message object to log.System.String.Format(System.String,System.Object[])</param>
+            <param name="args">the list of format arguments</param>
+        </member>
+        <member name="M:Conduit.Libraries.Logging.LogFacade.WarnFormat(System.String,System.Exception,System.Object[])">
+            <summary>
+            Log a message with the Common.Logging.LogLevel.Warn level.
+            </summary>
+            <param name="format">The format of the message object to log.System.String.Format(System.String,System.Object[])</param>
+            <param name="exception">The exception to log.</param>
+            <param name="args">the list of format arguments</param>
+        </member>
+        <member name="M:Conduit.Libraries.Logging.LogFacade.Error(System.Exception)">
+            <summary>
+            Log a message with the Common.Logging.LogLevel.Error level.
+            </summary>
+            <param name="exception">The exception to log.</param>
+        </member>
+        <member name="M:Conduit.Libraries.Logging.LogFacade.Error(System.String,System.String)">
+            <summary>
+            Log a message with the Common.Logging.LogLevel.Error level.
+            </summary>
+            <param name="title">The title to log.</param>
+            <param name="message">The message to log.</param>
+        </member>
+        <member name="M:Conduit.Libraries.Logging.LogFacade.Error(System.String,System.Exception)">
+            <summary>
+            Log a message with the Common.Logging.LogLevel.Error level.
+            </summary>
+            <param name="title">The title to log.</param>
+            <param name="exception">The exception to log.</param>
+        </member>
+        <member name="M:Conduit.Libraries.Logging.LogFacade.ErrorFormat(System.String,System.Object[])">
+            <summary>
+             Log a message with the Common.Logging.LogLevel.Error level.
+            </summary>
+            <param name="format">The format of the message object to log.System.String.Format(System.String,System.Object[])</param>
+            <param name="args">Log a message with the Common.Logging.LogLevel.Error level.</param>
+        </member>
+        <member name="M:Conduit.Libraries.Logging.LogFacade.ErrorFormat(System.String,System.Exception,System.Object[])">
+            <summary>
+            Log a message with the Common.Logging.LogLevel.Error level.
+            </summary>
+            <param name="format">The format of the message object to log.System.String.Format(System.String,System.Object[])</param>
+            <param name="exception">The exception to log.</param>
+            <param name="args"> the list of format arguments</param>
+        </member>
+        <member name="M:Conduit.Libraries.Logging.LogFacade.Info(System.Exception)">
+            <summary>
+             Log a message with the Common.Logging.LogLevel.Info level.
+            </summary>
+            <param name="exception">The exception to log.</param>
+        </member>
+        <member name="M:Conduit.Libraries.Logging.LogFacade.Info(System.String,System.String)">
+            <summary>
+             Log a message with the Common.Logging.LogLevel.Info level.
+            </summary>
+            <param name="title">The title to log.</param>
+            <param name="message">The message to log.</param>
+        </member>
+        <member name="M:Conduit.Libraries.Logging.LogFacade.Info(System.String,System.Exception)">
+            <summary>
+             Log a message with the Common.Logging.LogLevel.Info level.
+            </summary>
+            <param name="title">The title to log.</param>
+            <param name="exception">The exception to log.</param>
+        </member>
+        <member name="M:Conduit.Libraries.Logging.LogFacade.InfoFormat(System.String,System.Object[])">
+            <summary>
+             Log a message with the Common.Logging.LogLevel.Info level.
+            </summary>
+            <param name="format">The format of the message object to log.System.String.Format(System.String,System.Object[])</param>
+            <param name="args">the list of format arguments</param>
+        </member>
+        <member name="M:Conduit.Libraries.Logging.LogFacade.InfoFormat(System.String,System.Exception,System.Object[])">
+            <summary>
+             Log a message with the Common.Logging.LogLevel.Info level.
+            </summary>
+            <param name="format">The format of the message object to log.System.String.Format(System.String,System.Object[])</param>
+            <param name="exception"> The exception to log.</param>
+            <param name="args">the list of format arguments</param>
+        </member>
+        <member name="M:Conduit.Libraries.Logging.LogFacade.Fatal(System.Exception)">
+            <summary>
+            Log a message with the Common.Logging.LogLevel.Fatal level.
+            </summary>
+            <param name="exception">The exception to log.</param>
+        </member>
+        <member name="M:Conduit.Libraries.Logging.LogFacade.Fatal(System.String,System.String)">
+            <summary>
+            Log a message with the Common.Logging.LogLevel.Fatal level.
+            </summary>
+            <param name="title">The title to log.</param>
+            <param name="message">The message to log.</param>
+        </member>
+        <member name="M:Conduit.Libraries.Logging.LogFacade.Fatal(System.String,System.Exception)">
+            <summary>
+            Log a message with the Common.Logging.LogLevel.Fatal level.
+            </summary>
+            <param name="title">The title to log.</param>
+            <param name="exception">The exception to log.</param>
+        </member>
+        <member name="M:Conduit.Libraries.Logging.LogFacade.FatalFormat(System.String,System.Object[])">
+            <summary>
+            Log a message with the Common.Logging.LogLevel.Fatal level.
+            </summary>
+            <param name="format">The format of the message object to log.System.String.Format(System.String,System.Object[])</param>
+            <param name="args">the list of format arguments</param>
+        </member>
+        <member name="M:Conduit.Libraries.Logging.LogFacade.FatalFormat(System.String,System.Exception,System.Object[])">
+            <summary>
+            Log a message with the Common.Logging.LogLevel.Fatal level.
+            </summary>
+            <param name="format">The format of the message object to log.System.String.Format(System.String,System.Object[])</param>
+            <param name="exception">The exception to log.</param>
+            <param name="args">the list of format arguments</param>
+        </member>
+        <member name="P:Conduit.Libraries.Logging.LogFacade.IsDebugEnabled">
+            <summary>
+            Checks if this logger is enabled for the Core.Level.Debug level.
+            </summary>
+        </member>
+        <member name="P:Conduit.Libraries.Logging.LogFacade.IsErrorEnabled">
+            <summary>
+            Checks if this logger is enabled for the Core.Level.Error level.
+            </summary>
+        </member>
+        <member name="P:Conduit.Libraries.Logging.LogFacade.IsFatalEnabled">
+            <summary>
+            Checks if this logger is enabled for the log4net.Core.Level.Fatal level.
+            </summary>
+        </member>
+        <member name="P:Conduit.Libraries.Logging.LogFacade.IsInfoEnabled">
+            <summary>
+            Checks if this logger is enabled for the Core.Level.Info level.
+            </summary>
+        </member>
+        <member name="P:Conduit.Libraries.Logging.LogFacade.IsWarnEnabled">
+            <summary>
+            Checks if this logger is enabled for the log4net.Core.Level.Warn level.
+            </summary>
+        </member>
+        <member name="T:Conduit.Libraries.Logging.Log">
+            <summary>
+            Logging wrapper for logging systems
+            </summary>
+        </member>
+        <member name="M:Conduit.Libraries.Logging.Log.GetLogger(System.String)">
+            <summary>
+            Get logger by name
+            
+            not thread safe
+            </summary>
+            <param name="name">logger name</param>
+            <returns>logger facade</returns>
+        </member>
+        <member name="P:Conduit.Libraries.Logging.Log.Application">
+            <summary>
+            Get Application events log
+            
+            used to report errors and info logs that related to the application health
+            </summary>
+        </member>
+        <member name="P:Conduit.Libraries.Logging.Log.System">
+            <summary>
+            Get system events log
+            
+            used to report lifetime events about the application health
+            </summary>
+        </member>
+        <member name="P:Conduit.Libraries.Logging.Log.Infrastructure">
+            <summary>
+            Get infrastructure events log
+            
+            used to report infrastructure components like logging providers, database mechanism, etc
+            </summary>
+        </member>
+        <member name="P:Conduit.Libraries.Logging.Log.Context">
+            <summary>
+            The thread context properties instance
+            </summary>
+        </member>
+        <member name="P:Conduit.Libraries.Logging.Log.AppDomain">
+            <summary>
+            App domain logging
+            </summary>
+        </member>
+        <member name="T:Conduit.Libraries.Logging.AppDomainLog">
+            <summary>
+            Handle domain logging exceptions
+            </summary>
+        </member>
+        <member name="M:Conduit.Libraries.Logging.AppDomainLog.LogExceptions">
+            <summary>
+            Set the app domain to log unhandled exceptions
+            </summary>
+        </member>
+        <member name="T:Conduit.Libraries.Logging.Context.LogContext">
+            <summary>
+            Logging Context.
+            
+            </summary>
+        </member>
+        <member name="P:Conduit.Libraries.Logging.Context.LogContext.Properties">
+            <summary>
+            The context properties map
+            
+            if http context exists the data store at the httpcontext items.
+            otherwise, stored at the thread context.
+            </summary>
+        </member>
+        <member name="T:Conduit.Libraries.Logging.LogMessage">
+            <summary>
+            Log message data structure
+            </summary>
+        </member>
+        <member name="M:Conduit.Libraries.Logging.LogMessage.ToString">
+            <summary>
+            Returns the string representation of the log message
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Conduit.Libraries.Logging.LogMessage.Title">
+            <summary>
+            Log message title
+            </summary>
+        </member>
+        <member name="P:Conduit.Libraries.Logging.LogMessage.Message">
+            <summary>
+            Log message content
+            </summary>
+        </member>
+        <member name="T:Conduit.Libraries.Logging.Context.ThreadContextProperties">
+            <summary>
+            Implementation of Properties collection for the <see cref="T:Conduit.Libraries.Logging.Context.ThreadContext" />
+            </summary>
+            <remarks>
+            <para>
+            Class implements a collection of properties that is specific to each thread.
+            The class is not synchronized as each thread has its own <see cref="T:Conduit.Libraries.Logging.Util.PropertiesDictionary" />.
+            </para>
+            </remarks>
+            <author>Nicko Cadell</author>
+        </member>
+        <member name="F:Conduit.Libraries.Logging.Context.ThreadContextProperties.s_threadLocalSlot">
+            <summary>
+            The thread local data slot to use to store a PropertiesDictionary.
+            </summary>
+        </member>
+        <member name="F:Conduit.Libraries.Logging.Context.ThreadContextProperties.current">
+            <summary>
+            the current thread context properties
+            </summary>
+        </member>
+        <member name="M:Conduit.Libraries.Logging.Context.ThreadContextProperties.#ctor">
+            <summary>
+            Internal constructor
+            </summary>
+            <remarks>
+            <para>
+            Initializes a new instance of the <see cref="T:log4net.Util.ThreadContextProperties" /> class.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:Conduit.Libraries.Logging.Context.ThreadContextProperties.Clear">
+            <summary>
+            Clear all properties
+            </summary>
+        </member>
+        <member name="M:Conduit.Libraries.Logging.Context.ThreadContextProperties.GetProperties(System.Boolean)">
+            <summary>
+            Get the <c>PropertiesDictionary</c> for this thread.
+            </summary>
+            <param name="create">create the dictionary if it does not exist, otherwise return null if is does not exist</param>
+            <returns>the properties for this thread</returns>
+        </member>
+        <member name="M:Conduit.Libraries.Logging.Context.ThreadContextProperties.Remove(System.String)">
+            <summary>
+            Remove a property
+            </summary>
+            <param name="key">the key for the entry to remove</param>
+        </member>
+        <member name="P:Conduit.Libraries.Logging.Context.ThreadContextProperties.Current">
+            <summary>
+            returns the current thread context properties
+            </summary>
+        </member>
+        <member name="P:Conduit.Libraries.Logging.Context.ThreadContextProperties.Item(System.String)">
+            <summary>
+            Gets or sets the value of a property
+            </summary>
+            <value>
+            The value for the property with the specified key
+            </value>
+        </member>
+    </members>
+</doc>

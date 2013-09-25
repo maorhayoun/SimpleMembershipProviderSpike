@@ -1,0 +1,719 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Conduit.Mobile.Contracts</name>
+    </assembly>
+    <members>
+        <member name="T:Conduit.Mobile.Contracts.CacheControlAttribute">
+            <summary>
+            Adds A no-cache header to unsuccessful responses 
+            </summary>
+        </member>
+        <member name="F:Conduit.Mobile.Contracts.Caching.CacheItemsValues.Auto">
+            <summary>
+            The result will be cached if the method did not explicitly cache an item
+            </summary>
+        </member>
+        <member name="F:Conduit.Mobile.Contracts.Caching.CacheItemsValues.Never">
+            <summary>
+            The method is completely in-charge of caching items
+            </summary>
+        </member>
+        <member name="F:Conduit.Mobile.Contracts.Caching.CacheItemsValues.Always">
+            <summary>
+            Always cache the response
+            </summary>
+        </member>
+        <member name="T:Conduit.Mobile.Contracts.Caching.CacheAttribute">
+            <summary>
+            Adds caching capabilities to operations
+            </summary>
+        </member>
+        <member name="M:Conduit.Mobile.Contracts.Caching.CacheAttribute.createMethod(System.String,System.Type)">
+            <summary>
+            Helper method to compile our Validation method if present
+            </summary>
+            <param name="method">The method name</param>
+            <param name="type">The type the method is declared on</param>
+            <returns></returns>
+        </member>
+        <member name="P:Conduit.Mobile.Contracts.Caching.CacheAttribute.CacheProvider">
+            <summary>
+            Specifies the name of the cache provider to use
+            </summary>
+        </member>
+        <member name="P:Conduit.Mobile.Contracts.Caching.CacheAttribute.CacheKeyParameterName">
+            <summary>
+            Specifies a name of a parameter defined on the method that maps the cache key
+            </summary>
+        </member>
+        <member name="P:Conduit.Mobile.Contracts.Caching.CacheAttribute.MethodName">
+            <summary>
+            Specifies an optional static Method to call to retrieve the cache key for items
+            </summary>
+            <remarks>The method signature should match string(string operationName, object[] inputs)</remarks>
+        </member>
+        <member name="P:Conduit.Mobile.Contracts.Caching.CacheAttribute.TargetType">
+            <summary>
+            specifies the type <see cref="P:Conduit.Mobile.Contracts.Caching.CacheAttribute.MethodName"/>is defined on
+            </summary>
+        </member>
+        <member name="P:Conduit.Mobile.Contracts.Caching.CacheAttribute.CacheItems">
+            <summary>
+            specifies when items should be cached
+            </summary>
+        </member>
+        <member name="P:Conduit.Mobile.Contracts.Caching.CacheAttribute.Expiration">
+            <summary>
+            Specifies the default amount of time an item should be kept in the cache
+            </summary>
+        </member>
+        <member name="P:Conduit.Mobile.Contracts.Caching.CacheAttribute.ProxyExpiration">
+            <summary>
+            Specifies the default amount of time an item should be kept in a proxy cache
+            </summary>
+        </member>
+        <member name="P:Conduit.Mobile.Contracts.Caching.CacheAttribute.ProxyRevalidate">
+            <summary>
+            Specifies whether a proxy cache must reevalidate
+            </summary>
+        </member>
+        <member name="P:Conduit.Mobile.Contracts.Caching.CacheAttribute.LocalCache">
+            <summary>
+            should the cache be saved localy as well as specified in the headers
+            </summary>
+        </member>
+        <member name="P:Conduit.Mobile.Contracts.Caching.ICacheContext.Expiration">
+            <summary>
+            the default time to hold the item in the cache
+            </summary>
+        </member>
+        <member name="P:Conduit.Mobile.Contracts.Caching.ICacheContext.ProxyExpiration">
+            <summary>
+            the default time to hold the item in a proxy cache
+            </summary>
+        </member>
+        <member name="P:Conduit.Mobile.Contracts.Caching.ICacheContext.ProxyRevalidate">
+            <summary>
+            Should the proxy revalidate expired items
+            </summary>
+        </member>
+        <member name="P:Conduit.Mobile.Contracts.Caching.ICacheContext.LocalCache">
+            <summary>
+            Should the item be cached in the local memory
+            </summary>
+        </member>
+        <member name="T:Conduit.Mobile.Contracts.Caching.ICacheContext`1">
+            <summary>
+            Holds caching context info
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Conduit.Mobile.Contracts.Caching.ICacheContext`1.CacheItem(`0,System.String,System.TimeSpan)">
+            <summary>
+            Adds an item to the context cache
+            </summary>
+            <param name="item">the item to add</param>
+            <param name="etag">the items etag</param>
+            <param name="expires">the time to hold the item in cache</param>
+        </member>
+        <member name="P:Conduit.Mobile.Contracts.Caching.ICacheContext`1.NoCache">
+            <summary>
+            When set to true, the operation will not cache the returned item
+            </summary>
+        </member>
+        <member name="P:Conduit.Mobile.Contracts.Caching.ICacheContext`1.ClearCache">
+            <summary>
+            When set to true, the opeartion will act as no cache, and also clear the cache data.        
+            </summary>
+        </member>
+        <member name="P:Conduit.Mobile.Contracts.Caching.ICacheContext`1.Expiration">
+            <summary>
+            the default time to hold the item in the cache
+            </summary>
+        </member>
+        <member name="P:Conduit.Mobile.Contracts.Caching.ICacheContext`1.ProxyExpiration">
+            <summary>
+            the default time to hold the item in a proxy cache
+            </summary>
+        </member>
+        <member name="P:Conduit.Mobile.Contracts.Caching.ICacheContext`1.ProxyRevalidate">
+            <summary>
+            Should the proxy revalidate expired items
+            </summary>
+        </member>
+        <member name="P:Conduit.Mobile.Contracts.Caching.ICacheContext`1.LocalCache">
+            <summary>
+            Should the item be cached in the local memory
+            </summary>
+        </member>
+        <member name="T:Conduit.Mobile.Contracts.Caching.CacheContext`1">
+            <summary>
+            Provides a helpers for caching items in a context of an operation
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Conduit.Mobile.Contracts.Caching.CacheContext`1.CacheItem(`0)">
+            <summary>
+            Adds the item to the current caching context for the given amount of time
+            </summary>
+            <param name="item">The Item to add</param>        
+        </member>
+        <member name="M:Conduit.Mobile.Contracts.Caching.CacheContext`1.CacheItem(`0,System.String)">
+            <summary>
+            Adds the item to the current caching context for the given amount of time
+            </summary>
+            <param name="item">The Item to add</param>
+            <param name="etag">The ETag to set for the item</param>
+        </member>
+        <member name="M:Conduit.Mobile.Contracts.Caching.CacheContext`1.CacheItem(`0,System.String,System.TimeSpan)">
+            <summary>
+            Adds the item to the current caching context for the given amount of time
+            </summary>
+            <param name="item">The Item to add</param>
+            <param name="etag">The ETag to set for the item</param>
+            <param name="expires">The expiration time of the item in the cache</param>
+        </member>
+        <member name="M:Conduit.Mobile.Contracts.Caching.CacheContext`1.InvalidateCache(System.String,System.String)">
+            <summary>
+            Removes an item from the cache
+            </summary>
+            <param name="provider"></param>
+            <param name="key"></param>
+        </member>
+        <member name="P:Conduit.Mobile.Contracts.Caching.CacheContext`1.Current">
+            <summary>
+            Returns the current cache context
+            </summary>
+        </member>
+        <member name="M:Conduit.Mobile.Contracts.Context.ContextHelper.SpawnClientScope(System.ServiceModel.OperationContext,System.ServiceModel.IContextChannel)">
+            <summary>
+            Creates a new operation scope for use as a wcf client, while maintaining context keys
+            </summary>
+            <param name="currentContext"></param>
+            <param name="channel"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Conduit.Mobile.Contracts.Devices.DeviceHelper.ContainsOnlySingleDevice(Conduit.Mobile.Contracts.DeviceTypes)">
+            <summary>
+            Checks if the given device type contains only single matching device
+            </summary>
+            <param name="deviceTypeToCheck"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Conduit.Mobile.Contracts.Devices.DeviceHelper.GetAllDeviceTypeValues">
+            <summary>
+            Gets all <paramref name="DeviceTypes"/> values 
+            excluding "All" and "Unknown"
+            </summary>
+            <returns>all device types</returns>
+        </member>
+        <member name="M:Conduit.Mobile.Contracts.Devices.DeviceHelper.GetDeviceTypeByUserAgnet(System.String)">
+            <summary>
+            Gets the matching device type by the given user agent
+            </summary>
+            <param name="userAgent">user agent string</param>
+            <returns>matching device type, or null (in case we failed to find a matching one)</returns>
+        </member>
+        <member name="M:Conduit.Mobile.Contracts.DeviceTypeAttribute.GetMessageType``1(Conduit.Mobile.Contracts.DeviceTypes)">
+            <summary>
+            Returns a type deriving from <typeparamref name="T"/> that has a <see cref="T:Conduit.Mobile.Contracts.DeviceTypeAttribute"/> defined with the given <paramref name="deviceType"/>
+            </summary>
+            <typeparam name="T">The type to search hierarchy</typeparam>
+            <param name="deviceType">The device type to match</param>
+            <exception cref="T:System.IndexOutOfRangeException">Thrown if no type found</exception>
+            <returns>A type assignable from <typeparamref name="T"/></returns>
+        </member>
+        <member name="M:Conduit.Mobile.Contracts.DeviceTypeAttribute.GetDeviceType(System.Type)">
+            <summary>
+            Tests a given type for the <see cref="T:Conduit.Mobile.Contracts.DeviceTypeAttribute"/> and returns the <see cref="T:Conduit.Mobile.Contracts.DeviceTypes"/> found
+            </summary>
+            <param name="type">The type to test</param>
+            <returns></returns>
+        </member>
+        <member name="F:Conduit.Mobile.Contracts.DeviceTypes.IPhone">
+            <summary>
+            Apple
+            </summary>
+        </member>
+        <member name="F:Conduit.Mobile.Contracts.DeviceTypes.Android">
+            <summary>
+            Google
+            </summary>
+        </member>
+        <member name="F:Conduit.Mobile.Contracts.DeviceTypes.Rim">
+            <summary>
+            Blackberry
+            </summary>
+        </member>
+        <member name="F:Conduit.Mobile.Contracts.DeviceTypes.WindowsMobile">
+            <summary>
+            Microsoft
+            </summary>
+        </member>
+        <member name="F:Conduit.Mobile.Contracts.DeviceTypes.Symbian">
+            <summary>
+            Nokia
+            </summary>
+        </member>
+        <member name="F:Conduit.Mobile.Contracts.DeviceTypes.Bada">
+            <summary>
+            Samsung
+            </summary>
+        </member>
+        <member name="F:Conduit.Mobile.Contracts.DeviceTypes.WebApp">
+            <summary>
+            Web App
+            </summary>
+        </member>
+        <member name="F:Conduit.Mobile.Contracts.DeviceTypes.Tablet">
+            <summary>
+            Tablet
+            </summary>
+        </member>
+        <member name="F:Conduit.Mobile.Contracts.DeviceTypes.ConduitGadget">
+            <summary>
+            Chrome extensions and conduit gadgets
+            </summary>
+        </member>
+        <member name="F:Conduit.Mobile.Contracts.DeviceTypes.IPad">
+            <summary>
+            IPad (includes Tablet and IPhone)
+            </summary>
+        </member>
+        <member name="F:Conduit.Mobile.Contracts.DeviceTypes.All">
+            <summary>
+            All devices (except Unknown)
+            </summary>
+        </member>
+        <member name="F:Conduit.Mobile.Contracts.Devices.ExtendedDeviceType.IPhone">
+            <summary>
+            Apple
+            </summary>
+        </member>
+        <member name="F:Conduit.Mobile.Contracts.Devices.ExtendedDeviceType.IPad">
+            <summary>
+            Apple
+            </summary>
+        </member>
+        <member name="F:Conduit.Mobile.Contracts.Devices.ExtendedDeviceType.AndroidMobile">
+            <summary>
+            Google
+            </summary>
+        </member>
+        <member name="F:Conduit.Mobile.Contracts.Devices.ExtendedDeviceType.AndroidTablet">
+            <summary>
+            Google
+            </summary>
+        </member>
+        <member name="F:Conduit.Mobile.Contracts.Devices.ExtendedDeviceType.WindowsMobile">
+            <summary>
+            Microsoft
+            </summary>
+        </member>
+        <member name="F:Conduit.Mobile.Contracts.Devices.ExtendedDeviceType.WindowsTablet">
+            <summary>
+            Microsoft
+            </summary>
+        </member>
+        <member name="F:Conduit.Mobile.Contracts.Devices.ExtendedDeviceType.RimMobile">
+            <summary>
+            Blackberry
+            </summary>
+        </member>
+        <member name="F:Conduit.Mobile.Contracts.Devices.ExtendedDeviceType.RimTablet">
+            <summary>
+            Blackberry
+            </summary>
+        </member>
+        <member name="F:Conduit.Mobile.Contracts.Devices.ExtendedDeviceType.SymbianMobile">
+            <summary>
+            Nokia
+            </summary>
+        </member>
+        <member name="F:Conduit.Mobile.Contracts.Devices.ExtendedDeviceType.SymbianTablet">
+            <summary>
+            Nokia
+            </summary>
+        </member>
+        <member name="F:Conduit.Mobile.Contracts.Devices.ExtendedDeviceType.BadaMobile">
+            <summary>
+            Samsung
+            </summary>
+        </member>
+        <member name="F:Conduit.Mobile.Contracts.Devices.ExtendedDeviceType.BadaTablet">
+            <summary>
+            Samsung
+            </summary>
+        </member>
+        <member name="F:Conduit.Mobile.Contracts.EntityTag.ComputeTagValues.Auto">
+            <summary>
+            An ETag will be calculated if the method did not explicitly set one
+            </summary>
+        </member>
+        <member name="F:Conduit.Mobile.Contracts.EntityTag.ComputeTagValues.Never">
+            <summary>
+            The method is completely in-charge of setting tags
+            </summary>
+        </member>
+        <member name="F:Conduit.Mobile.Contracts.EntityTag.ComputeTagValues.Always">
+            <summary>
+            Always add a tag
+            </summary>
+        </member>
+        <member name="T:Conduit.Mobile.Contracts.EntityTag.ETagAttribute">
+            <summary>
+            Adds ETag support to Service operations
+            </summary>
+            <remarks>Use in combination with the <see cref="T:Conduit.Mobile.Contracts.EntityTag.ETagContext"/> class to check whether computing is necessary, and replying to the client with a proper ETag</remarks>
+        </member>
+        <member name="M:Conduit.Mobile.Contracts.EntityTag.ETagAttribute.createMethod(System.String,System.Type)">
+            <summary>
+            Helper method to compile our Validation method if present
+            </summary>
+            <param name="method">The method name</param>
+            <param name="type">The type the method is declared on</param>
+            <returns></returns>
+        </member>
+        <member name="M:Conduit.Mobile.Contracts.EntityTag.ETagAttribute.cancelCallback">
+            <summary>
+            Remove the callback request, so that the JSON/P message inspector does not come into play        /// 
+            </summary>
+        </member>
+        <member name="P:Conduit.Mobile.Contracts.EntityTag.ETagAttribute.AutoComputeTag">
+            <summary>
+            specifies when to compute an Etag based on the operation's response
+            </summary>
+        </member>
+        <member name="P:Conduit.Mobile.Contracts.EntityTag.ETagAttribute.MethodName">
+            <summary>
+            Specifies an optional static Method to call before executing the service method, that will validate the ETag
+            </summary>
+            <remarks>The method signature should match bool(string operationName, object[] inputs)</remarks>
+        </member>
+        <member name="P:Conduit.Mobile.Contracts.EntityTag.ETagAttribute.TargetType">
+            <summary>
+            specifies the type <see cref="P:Conduit.Mobile.Contracts.EntityTag.ETagAttribute.MethodName"/>is defined on
+            </summary>
+        </member>
+        <member name="M:Conduit.Mobile.Contracts.EntityTag.ETagContext.AddOutgoingTag(System.Object)">
+            <summary>
+            Calculates a hash for the object and adds it as an ETag for the service
+            </summary>
+            <param name="returnValue"></param>
+        </member>
+        <member name="P:Conduit.Mobile.Contracts.EntityTag.ETagContext.HasValidated">
+            <summary>
+            Specifies whether the current context has been validated, and no work should be done
+            </summary>
+        </member>
+        <member name="M:Conduit.Mobile.Contracts.Flush.Config.FlushResource.Flush``1(``0)">
+            <summary>
+            Flushes the CDN for the formatted resource
+            </summary>
+            <typeparam name="T">The item holding the resource</typeparam>
+            <param name="obj"></param>
+        </member>
+        <member name="M:Conduit.Mobile.Contracts.Flush.Config.FlushResource.Flush(System.String)">
+            <summary>
+            Flushes the given expression
+            </summary>
+            <param name="expression">The expression to flush</param>
+        </member>
+        <member name="M:Conduit.Mobile.Contracts.Flush.Config.FlushEntry.Flush``1(``0)">
+            <summary>
+            Flushes the CDN for the formatted resource
+            </summary>
+            <typeparam name="T">The item holding the resource</typeparam>
+            <param name="obj"></param>
+        </member>
+        <member name="M:Conduit.Mobile.Contracts.Flush.Config.FlushEntry.Flush(System.String)">
+            <summary>
+            Flushes the given expression
+            </summary>
+            <param name="expression">The expression to flush</param>
+        </member>
+        <member name="T:Conduit.Mobile.Contracts.Geo.LocationHelper">
+            <summary>
+            Helper class for location methods
+            </summary>
+        </member>
+        <member name="M:Conduit.Mobile.Contracts.Geo.LocationHelper.IsLocationValid(System.Nullable{System.Decimal},System.Nullable{System.Decimal})">
+            <summary>
+            Checks if the given longtitude and latitude are valid
+            </summary>
+            <param name="longitude"></param>
+            <param name="latitude"></param>
+            <returns>true if valid, otherwise false</returns>
+        </member>
+        <member name="M:Conduit.Mobile.Contracts.Helpers.ExceptionHelper.Throw``1(Conduit.Mobile.Contracts.Response{``0},System.String,System.Boolean)">
+            <summary>
+            Handles an exception from <paramref name="Response"/> object
+            Log the error and handle not found exception if requested
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="result"></param>
+            <param name="errorMessage"></param>
+            <param name="handleNotFound"></param>
+        </member>
+        <member name="M:Conduit.Mobile.Contracts.Helpers.ExceptionHelper.Throw``1(Conduit.Mobile.Contracts.Response{``0},System.String)">
+            <summary>
+            Handles an exception from <paramref name="Response"/> object
+            Log the error and handle not found exception 
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="result"></param>
+            <param name="errorMessage"></param>
+        </member>
+        <member name="M:Conduit.Mobile.Helpers.GetId(System.String)">
+            <summary>
+            Attempts to extract a <see cref="T:System.Guid"/> from a string
+            </summary>
+            <param name="id">The string id</param>
+            <returns>A guid representation</returns>
+            <exception cref="T:Conduit.Mobile.InvalidIdException">thrown if the <paramref name="id"/> cannot be converted to a <see cref="T:System.Guid"/></exception>
+        </member>
+        <member name="M:Conduit.Mobile.Helpers.AsSuccess``1(``0)">
+            <summary>
+            creates a successful response object for the given result
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="result"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Conduit.Mobile.Helpers.AsId``1(``0)">
+            <summary>
+            Returns the item as an <see cref="T:Conduit.Mobile.IdItem`1"/> object
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="id">The id to contain</param>
+            <returns></returns>
+        </member>
+        <member name="M:Conduit.Mobile.Helpers.Execute``1(System.Func{System.Guid,``0},System.String,System.Boolean)">
+            <summary>
+            Executes a request in a constrained section
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="method">The method to execute</param>
+            <param name="id">The id parsable parameter</param>
+            <param name="nullNotFound">If set to true, method's returning null, reply "ID_NOT_FOUND" error</param>
+            <returns>A response object to return</returns>
+        </member>
+        <member name="M:Conduit.Mobile.Helpers.Execute``1(System.Func{``0},System.Boolean)">
+            <summary>
+            Executes a request in a constrained section
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="method">The method to execute</param>
+            <param name="nullNotFound">If set to true, method's returning null, reply "ID_NOT_FOUND" error</param>
+            <returns>A response object to return</returns>
+        </member>
+        <member name="M:Conduit.Mobile.Helpers.Execute``1(System.Func{System.Guid,``0},System.String)">
+            <summary>
+            Executes a request in a constrained section
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="method">The method to execute</param>
+            <param name="id">The id parsable parameter</param>
+            <returns>A response object to return</returns>
+        </member>
+        <member name="M:Conduit.Mobile.Helpers.Execute``1(System.Func{System.Guid,``0},System.String,System.String,System.Boolean)">
+            <summary>
+            Executes a request in a constrained section
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="method">The method to execute</param>
+            <param name="id">The id parsable parameter</param>
+            <param name="errorCode">An error code to return for all exceptions</param>
+            <param name="nullNotFound">If set to true, method's returning null, reply "ID_NOT_FOUND" error</param>
+            <returns>A response object to return</returns>
+        </member>
+        <member name="M:Conduit.Mobile.Helpers.Execute``1(System.Func{``0},System.String,System.Boolean)">
+            <summary>
+            Executes a request in a constrained section
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="method">The method to execute</param>
+            <param name="errorCode">An error code to return for all exceptions</param>
+            <param name="nullNotFound">If set to true, method's returning null, reply "ID_NOT_FOUND" error</param>
+            <returns>A response object to return</returns>
+        </member>
+        <member name="M:Conduit.Mobile.Helpers.Execute``1(System.Func{System.Guid,``0},System.String,System.Func{System.Exception,System.String},System.Boolean)">
+            <summary>
+            Executes a request in a constrained section
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="method">The method to execute</param>
+            <param name="id">The id parsable parameter</param>
+            <param name="getErrorCode">A method for extracting an error code from an exception</param>
+            <param name="nullNotFound">If set to true, method's returning null, reply "ID_NOT_FOUND" error</param>
+            <returns>A response object to return</returns>
+        </member>
+        <member name="M:Conduit.Mobile.Helpers.Execute``1(System.Func{``0},System.Func{System.Exception,System.String},System.Boolean)">
+            <summary>
+            Executes a request in a constrained section
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="method">The method to execute</param>
+            <param name="getErrorCode">A method for extracting an error code from an exception</param>
+            <param name="nullNotFound">If set to true, method's returning null, reply "ID_NOT_FOUND" error</param>
+            <returns>A response object to return</returns>
+        </member>
+        <member name="M:Conduit.Mobile.Contracts.IMailSender.SetCredentials(System.String,System.String)">
+            <summary>
+            Set provider credentials
+            Before using the SendMail method the provider credentials must be set
+            </summary>
+            <param name="user"></param>
+            <param name="password"></param>
+        </member>
+        <member name="M:Conduit.Mobile.Contracts.IMailSender.SendMail(System.String[],System.Int32,Conduit.Mobile.Contracts.TemplateParameter[])">
+            <summary>
+            Send emails to the given recipients list using the provided template id.
+            The teplate parameters will be replaced in the template body
+            </summary>
+        </member>
+        <member name="M:Conduit.Mobile.Contracts.IConduitMailSender.SetCredentials(System.String,System.String,System.String,System.String)">
+            <summary>
+            Set provider credentials
+            Before using the SendMail method the provider credentials must be set
+            </summary>
+            <param name="user"></param>
+            <param name="password"></param>
+        </member>
+        <member name="M:Conduit.Mobile.Contracts.IConduitMailSender.SendMail(System.String[],System.String,Conduit.Mobile.Contracts.TemplateParameter[])">
+            <summary>
+            Send emails to the given recipients list using the provided template id.
+            The teplate parameters will be replaced in the template body
+            </summary>
+        </member>
+        <member name="T:Conduit.Mobile.Contracts.JSONUnknown">
+            <summary>
+            Helper class for storing unknown JSON objects
+            </summary>
+        </member>
+        <member name="M:Conduit.Mobile.Contracts.JSONUnknown.As``1">
+            <summary>
+            Converts the current item to an instance of <typeparamref name="T"/>
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Conduit.Mobile.Contracts.JSONUnknown.As``1(System.Boolean)">
+            <summary>
+            Converts the current item to an instance of <typeparamref name="T"/>
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Conduit.Mobile.Contracts.JSONUnknown.AsXml">
+            <summary>
+            Converts the current item to a <see cref="T:System.Xml.Linq.XDocument"/> object
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Conduit.Mobile.Contracts.JSONUnknown.AsXml(System.String)">
+            <summary>
+            Converts the current item to a <see cref="T:System.Xml.Linq.XDocument"/> object
+            </summary>
+            <param name="rootName">the root name for the <see cref="T:System.Xml.Linq.XDocument"/> object</param>
+            <returns></returns>
+        </member>
+        <member name="M:Conduit.Mobile.Contracts.JSONUnknown.FromXmlString``1(System.String)">
+            <summary>
+            Creates a <see cref="T:Conduit.Mobile.Contracts.JSONUnknown"/> object from an XML string
+            </summary>
+            <param name="xml">The XML string</param>
+            <returns>JSONUnknown</returns>
+        </member>
+        <member name="M:Conduit.Mobile.Contracts.JSONUnknown.FromString(System.String)">
+            <summary>
+            Creates a <see cref="T:Conduit.Mobile.Contracts.JSONUnknown"/> object from a JSON string
+            </summary>
+            <param name="JSON">The JSON string</param>
+            <returns></returns>
+        </member>
+        <member name="M:Conduit.Mobile.Contracts.JSONUnknown.FromString``1(System.String)">
+            <summary>
+            Creates a <typeparamref name="T"/> object from a JSON string
+            </summary>
+            <typeparam name="T">The type of item to create</typeparam>
+            <param name="JSON">The JSON string</param>
+            <returns></returns>
+        </member>
+        <member name="M:Conduit.Mobile.Contracts.JSONUnknown.FromEnumerationString``1(System.String)">
+            <summary>
+            Creates a <typeparamref name="T"/> object from a JSON string
+            </summary>
+            <typeparam name="T">The type of item to create</typeparam>
+            <param name="JSON">The JSON string</param>
+            <returns></returns>
+        </member>
+        <member name="P:Conduit.Mobile.Contracts.JSONUnknown.JSON">
+            <summary>
+            Returns the JSON Used to create this object
+            </summary>
+        </member>
+        <member name="P:Conduit.Mobile.Contracts.JSONUnknown.SimpleContent">
+            <summary>
+            Returns a simple dictionary based representation of the data
+            </summary>
+        </member>
+        <member name="T:Conduit.Mobile.Contracts.ResourceLocationAttribute">
+            <summary>
+            Specifies the result resource location url created by a put method
+            </summary>
+        </member>
+        <member name="M:Conduit.Mobile.Contracts.Response`1.SetException(System.Exception)">
+            <summary>
+            Sets the Error Info to the given exception
+            </summary>
+            <param name="ex"></param>
+        </member>
+        <member name="M:Conduit.Mobile.Contracts.Response`1.Error(System.String)">
+            <summary>
+            returns an error response
+            </summary>
+            <param name="errorCode">The error code</param>
+            <returns></returns>
+        </member>
+        <member name="M:Conduit.Mobile.Contracts.Response`1.Error(System.String,System.Exception)">
+            <summary>
+            returns an error response
+            </summary>
+            <param name="errorCode">The error code</param>
+            <param name="ex">the exception that caused the error </param>
+            <returns></returns>
+        </member>
+        <member name="M:Conduit.Mobile.Contracts.Response`1.Error(System.String,System.String)">
+            <summary>
+            returns an error response
+            </summary>
+            <param name="errorCode">The error code</param>
+            <param name="ex">the exception that caused the error </param>
+            <returns></returns>
+        </member>
+        <member name="M:Conduit.Mobile.Contracts.Response`1.Success(`0)">
+            <summary>
+            creates a success response
+            </summary>
+            <param name="result"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Conduit.Mobile.Contracts.VerboseAttribute">
+            <summary>
+            Adds logic for replying verbose errors if the client requested
+            </summary>
+        </member>
+        <member name="P:Conduit.Mobile.Contracts.VerboseAttribute.Name">
+            <summary>
+            The default argument name
+            </summary>
+        </member>
+        <member name="P:Conduit.Mobile.Contracts.VerboseAttribute.ArgumentName">
+            <summary>
+            Specifies the argument name that determines if the call requires a verbose error
+            </summary>
+        </member>
+    </members>
+</doc>

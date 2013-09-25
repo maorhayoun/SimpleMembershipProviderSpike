@@ -1,0 +1,12 @@
+﻿@{
+    ViewBag.Title = "AdminOnly";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    PageData["Title"] = "Administrators only";
+}
+
+@if ( Roles.IsUserInRole("admin")) {
+    <span> Welcome <b>@WebSecurity.CurrentUserName</b>! </span>
+}
+else {
+     Response.Redirect("~/Account/AdminError");
+}

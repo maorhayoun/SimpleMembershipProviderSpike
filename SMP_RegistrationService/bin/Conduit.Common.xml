@@ -1,0 +1,1088 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Conduit.Common</name>
+    </assembly>
+    <members>
+        <member name="T:Conduit.Security.Cryptography.Encryption">
+            <summary>
+            Encrypt and decrypt an input based on the provided key
+            </summary>
+        </member>
+        <member name="M:Conduit.Security.Cryptography.Encryption.EncryptString(System.String,System.String)">
+            <summary>
+            Encrypt an input based on the provided key
+            </summary>
+            <param name="input"></param>
+            <param name="encryptionKey"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Conduit.Security.Cryptography.Encryption.DecryptString(System.String,System.String)">
+            <summary>
+            Decrypt an input based on the provided key
+            </summary>
+            <param name="input"></param>
+            <param name="encryptionKey"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Conduit.OAuth.UrlEncode(System.String,System.Boolean)">
+            <SUMMARY>
+            This is a different Url Encode implementation since the default .NET one outputs the percent encoding in lower case.
+            While this is not a problem with the percent encoding spec, it is used in upper case throughout OAuth
+            </SUMMARY>
+            <PARAM name="value">The value to Url encode</PARAM>
+            <RETURNS>Returns a Url encoded string</RETURNS>
+        </member>
+        <member name="M:Conduit.YQLClient.PropertyHelper`1.GetProperties(`0)">
+            <summary>
+            Returns a Url encoded parameter list of an item
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Conduit.Common.BinarySerializer">
+            <summary>
+            Contains static methods to serializes and desterilizes an object, or an entire graph
+            of connected objects, in binary format, to a bytes array, and also contains a method
+            for cloning an object through binary serialization and deserialization.
+            </summary>
+        </member>
+        <member name="M:Conduit.Common.BinarySerializer.GetBytes(System.Object)">
+            <summary>
+            Serializes object, or graph of objects with the specified top (root), using
+            <see cref="T:System.Runtime.Serialization.Formatters.Binary.BinaryFormatter"/> object, and returns a byte array buffer contains
+            this data.
+            </summary>
+            <param name="obj">Object, or graph of objects with the specified top (root),
+            to serialize.</param>
+            <returns>a byte array with the Serialized object's data.</returns>
+            <exception cref="T:System.ArgumentNullException">The parameter is null.</exception>
+            <exception cref="T:System.Runtime.Serialization.SerializationException">An error
+            has occurred during serialization, such as if an object in the graph parameter
+            is not marked as serializable.</exception>
+        </member>
+        <member name="M:Conduit.Common.BinarySerializer.GetObject(System.Byte[])">
+            <summary>
+            Deserializes the specified binary serialized object into an object (or graph of
+            objects with the specified top (root)), using <see cref="T:System.Runtime.Serialization.Formatters.Binary.BinaryFormatter"/>
+            object.
+            </summary>
+            <param name="buffer">Array of unsigned bytes from which to deserialize the
+            object (or graph of objects with the specified top (root)).</param>
+            <returns>Deserialized object (or graph of objects with the specified top (root).
+            </returns>
+            <exception cref="T:System.ArgumentNullException">The parameter is null.</exception>
+        </member>
+        <member name="M:Conduit.Common.BinarySerializer.GetBytes``1(``0)">
+            <summary>
+            Serializes <typeparamref name="T"/> object, or graph of objects with the
+            specified top (root), using <see cref="T:System.Runtime.Serialization.Formatters.Binary.BinaryFormatter"/> object, and returns a
+            byte array buffer contains this data.
+            </summary>
+            <param name="obj"><typeparamref name="T"/> object, or graph of objects with
+            the specified top (root), to serialize.</param>
+            <typeparam name="T">Type of the object to serialize.</typeparam>
+            <returns>a byte array with the Serialized object's data.</returns>
+            <exception cref="T:System.ArgumentNullException">The parameter is null.</exception>
+            <exception cref="T:System.Runtime.Serialization.SerializationException">An error
+            has occurred during serialization, such as if an object in the graph parameter
+            is not marked as serializable.</exception>
+        </member>
+        <member name="M:Conduit.Common.BinarySerializer.GetObject``1(System.Byte[])">
+            <summary>
+            Deserializes the specified binary serialized object into a
+            <typeparamref name="T"/> object (or graph of objects with the specified
+            top (root)), using <see cref="T:System.Runtime.Serialization.Formatters.Binary.BinaryFormatter"/> object.
+            </summary>
+            <param name="buffer">Array of unsigned bytes from which to deserialize the
+            <typeparamref name="T"/> object (or graph of objects with the specified
+            top (root)).</param>
+            <typeparam name="T">Type of the object to deserialize.</typeparam>
+            <returns>Deserialized object (or graph of objects with the specified top (root).
+            </returns>
+            <exception cref="T:System.ArgumentNullException">The parameter is null.</exception>
+        </member>
+        <member name="M:Conduit.Common.BinarySerializer.BinaryClone``1(``0)">
+            <summary>
+            Creates a new <typeparamref name="T"/> object that is a copy of the current
+            instance, through binary serialization and deserialization.
+            </summary>
+            <param name="obj"><typeparamref name="T"/> object to clone.</param>
+            <typeparam name="T">Type of the object to clone.</typeparam>
+            <returns>A new <typeparamref name="T"/> object that is a copy of this instance.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">The parameter is null.</exception>
+            <exception cref="T:System.Runtime.Serialization.SerializationException">An error
+            has occurred during serialization, such as if an object in the graph parameter
+            is not marked as serializable.</exception>
+        </member>
+        <member name="T:Conduit.Common.Services.IServicePoolItem`1">
+            <summary>
+            A disposable wrapper for the <see cref="!:ServicePool[T]"/> instance
+            </summary>
+            <typeparam name="T">The Service Type</typeparam>
+        </member>
+        <member name="M:Conduit.Common.Services.IServicePoolItem`1.Fault">
+            <summary>
+            Call this method to mark the service instance as faulted
+            </summary>
+            <remarks>must be called prior to dispose</remarks>
+        </member>
+        <member name="P:Conduit.Common.Services.IServicePoolItem`1.Service">
+            <summary>
+            Reference to the service instance
+            </summary>
+        </member>
+        <member name="T:Conduit.Common.Services.ServiceChannelPool`1">
+            <summary>
+            Helper class used to manage a pool of services
+            </summary>
+            <typeparam name="T">The service type</typeparam>
+        </member>
+        <member name="M:Conduit.Common.Services.ServiceChannelPool`1.GetInstance">
+            <summary>
+            Gets an avilable instance of <typeparamref name="T"/> from the pool
+            or creates a new one if possible
+            </summary>
+            <exception cref="T:System.InvalidOperationException">Thrown if the pool was disposed while waiting for an available instance</exception>
+            <example>using(var svc = pool.GetInstance())
+            {
+                svc.Service.foo();
+            }</example>
+            <returns>A disposable IServicePoolItem[T] to use the service from in a using clause</returns>
+        </member>
+        <member name="M:Conduit.Xml2Json.ToJson(System.Xml.Linq.XElement,System.Boolean,System.Boolean)">
+            <summary>
+            Converts an <see cref="T:System.Xml.Linq.XElement"/> object to JSON format
+            </summary>
+            <param name="xmlElm">The element to convert</param>
+            <param name="fixCase">Should the element names be fixed to lowerCamelCase</param>
+            <returns>JSON Representation of the element</returns>
+        </member>
+        <member name="M:Conduit.Xml2Json.ContentToJson(System.Xml.Linq.XElement,System.Boolean,System.Boolean)">
+             <summary>
+             Converts the <see cref="T:System.Xml.Linq.XElement"/> content to JSON format
+             </summary>
+             <param name="xmlElm">The element to convert its content</param>
+             <param name="fixCase">Should the element names be fixed to lowerCamelCase</param>
+            <param name="detectPrimitive">Whether primitive values treated as string even if their value is decimal or boolean </param>
+             <returns>JSON Representation of the element</returns>
+        </member>
+        <member name="T:Conduit.UriBuilderExtensions">
+            <summary>
+            Utility extensions for <see cref="T:System.UriBuilder"/>
+            </summary>
+        </member>
+        <member name="M:Conduit.UriBuilderExtensions.AddParameters(System.UriBuilder,System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Adds get parameters to the query string of <paramref name="builder"/>
+            </summary>
+            <param name="builder">The uri builder to which parameters will be added</param>
+            <param name="queryParams">Parameters to add</param>
+            <returns></returns>
+        </member>
+        <member name="M:Conduit.UriBuilderExtensions.AddParameters(System.UriBuilder,System.Collections.Specialized.NameValueCollection)">
+            <summary>
+            Adds get parameters to the query string of <paramref name="builder"/>
+            </summary>
+            <param name="builder">The uri builder to which parameters will be added</param>
+            <param name="queryParams">Parameters to add</param>
+            <returns></returns>
+        </member>
+        <member name="M:Conduit.Common.TypeScanner.LoadTypes``1">
+            <summary>
+            Loads all instances of a type in the system
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Conduit.Common.TypeScanner.FindTypes``1">
+            <summary>
+            Loads all instances of a type in the system
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Conduit.Common.WorkerManager.QueueAction(System.Action,System.Boolean)">
+            <summary>
+            Queues an action to the static working thread
+            </summary>
+            <param name="action">The action to queue</param>
+            <param name="forceAdd">if false and the current thread is the worker thread, the action wil be executed without being queued</param>
+        </member>
+        <member name="T:Conduit.Common.Data.EntityInstanceIdResolver">
+            <summary>
+            Generic resolver of instance id by entity id and version pair.
+            Requires database configuration for a stored procedure which does the actual resolving.
+            </summary>
+        </member>
+        <member name="M:Conduit.Common.Data.EntityInstanceIdResolver.#ctor">
+            <summary>
+            Default constructor - uses configuration settings
+            </summary>
+        </member>
+        <member name="M:Conduit.Common.Data.EntityInstanceIdResolver.#ctor(System.String,System.String,System.String)">
+            <summary>
+            EntityInstanceIdResolver ctor.
+            </summary>
+            <param name="dbName">database name</param>
+            <param name="spName">resolver stored procedure</param>
+            <param name="instanceIdPropName">instance id property name</param>
+        </member>
+        <member name="M:Conduit.Common.Data.EntityInstanceIdResolver.#ctor(System.String,System.String)">
+            <summary>
+            EntityInstanceIdResolver ctor.
+            </summary>
+            <param name="dbName">database name</param>
+            <param name="spName">resolver stored procedure</param>
+        </member>
+        <member name="M:Conduit.Common.Data.EntityInstanceIdResolver.GetInstanceId(System.Guid,System.Int32,System.Int32)">
+            <summary>
+            Gets the unique instance id for content entity by its id and version
+            </summary>
+            <param name="entityId">content entity id</param>
+            <param name="version">content entity version</param>
+            <param name="environment">related app environment</param>
+            <returns>unique instance id</returns>
+        </member>
+        <member name="M:Conduit.ThreadParalleExtenders.ParallelExecute``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0},System.Nullable{System.TimeSpan})">
+            <summary>
+            Executes a given method in parallel on each element in the enumeration
+            </summary>
+            <typeparam name="T">The return type of the enumeration</typeparam>
+            <param name="enumeration">the enumeration to execute the method on</param>
+            <param name="method">The method to process each item with</param>
+            <returns>an enumerable of the items processed (in the same order)</returns>
+        </member>
+        <member name="M:Conduit.ThreadParalleExtenders.ParallelExecute``2(System.Collections.Generic.IEnumerable{``1},System.Func{``1,``0},System.Nullable{System.TimeSpan})">
+            <summary>
+            Executes a given method in sequence on each element in the enumeration and returns an enumeration of the results 
+            </summary>
+            <typeparam name="T">The return type of the enumeration</typeparam>
+            <typeparam name="K">The input enumeration type</typeparam>
+            <param name="enumeration">the enumeration to execute the method on</param>
+            <param name="method">The method to process each item with</param>
+            <param name="maxWait">the max amount of time to wait for a command to complete</param>
+            <returns>an enumeration of the method results (in the same order)</returns>
+            <exception cref="T:System.Reflection.TargetInvocationException">If the <paramref name="method"/> throws an exception, it will be re-thrown 
+            as on the iterating thread 
+            when the item that caused the exception is yielded</exception>
+        </member>
+        <member name="M:Conduit.ThreadParalleExtenders.Do``2(System.Collections.Generic.IEnumerable{``1},System.Func{``1,``0})">
+            <summary>
+            Executes a given method in sequence on each element in the enumeration and returns an enumeration of the results 
+            </summary>
+            <typeparam name="T">The return type of the enumeration</typeparam>
+            <typeparam name="K">The input enumeration type</typeparam>
+            <param name="enumeration">the enumeration to execute the method on</param>
+            <param name="method">The method to process each item with</param>
+            <returns>an enumeration of the method results (in the same order)</returns>
+            <exception cref="T:System.Reflection.TargetInvocationException">If the <paramref name="method"/> throws an exception, it will be re-thrown 
+            as on the iterating thread 
+            when the item that caused the exception is yielded</exception>
+        </member>
+        <member name="M:Conduit.ThreadParalleExtenders.Do``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Executes the given sequence
+            </summary>
+            <typeparam name="T">The return type of the enumeration</typeparam>
+            <typeparam name="K">The input enumeration type</typeparam>
+            <param name="enumeration">the enumeration to execute the method on</param>
+            <returns>an enumeration of the method results (in the same order)</returns>
+            <exception cref="T:System.Reflection.TargetInvocationException">If the <paramref name="method"/> throws an exception, it will be re-thrown 
+            as on the iterating thread 
+            when the item that caused the exception is yielded</exception>
+        </member>
+        <member name="M:Conduit.ThreadParalleExtenders.Do``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})">
+            <summary>
+            Executes a given method in sequence on each element in the enumeration
+            </summary>
+            <typeparam name="T">The return type of the enumeration</typeparam>
+            <param name="enumeration">the enumeration to execute the method on</param>
+            <param name="method">The method to process each item with</param>
+            <returns>an enumerable of the items processed (in the same order)</returns>
+        </member>
+        <member name="M:Conduit.Common.SerializerHelper.XmlSerialize``1(``0)">
+            <summary>
+            Serialize the given object using <paramref name="XmlSerializer"/>
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Conduit.Common.SerializerHelper.XmlDeserialize``1(System.String)">
+            <summary>
+            Deserialize the given object using <paramref name="XmlSerializer"/>
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Conduit.Common.SerializerHelper.DataContractSerializet``1(``0)">
+            <summary>
+            Serialize the given input into bytes array using <paramref name="DataContractSerializer"/>
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Conduit.Common.SerializerHelper.DataContractDeserialize``1(System.Byte[])">
+            <summary>
+            Deserialize the given object using <paramref name="DataContractSerializer"/>
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="data"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Conduit.DataExtensions">
+            <summary>
+            Helper methods for data extraction and manipulation
+            </summary>
+        </member>
+        <member name="M:Conduit.DataExtensions.AsDataTable``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Converts an enumeration of items into a <see cref="T:System.Data.DataTable"/>
+            </summary>
+            <typeparam name="T">The item who's properties represent the table schema</typeparam>
+            <param name="items">The items to add as rows to the table</param>
+            <returns>A <see cref="T:System.Data.DataTable"/> populated with the items</returns>
+        </member>
+        <member name="M:Conduit.DataExtensions.NoNull``1(System.Object)">
+            <summary>
+            Returns a typed non-nulled version of an object
+            </summary>
+            <typeparam name="T">The typed version to return</typeparam>
+            <param name="value">The value to convert</param>
+            <returns>A typed version of the value</returns>
+            <remarks>The method will use <c>default(T)</c> to determine the default type to return</remarks>
+            <example><code>var ten = "5".NoNull(0) * "2".NoNull(0);</code></example>
+        </member>
+        <member name="M:Conduit.DataExtensions.NoNull``1(System.Object,``0)">
+            <summary>
+            Returns a typed non-nulled version of an object
+            </summary>
+            <typeparam name="T">The typed version to return</typeparam>
+            <param name="value">The value to convert</param>
+            <param name="defaultValue">The default value to return for nulls</param>
+            <returns>A typed version of the value</returns>
+            <example><code>var ten = "5".NoNull(0) * "2".NoNull(0);</code></example>
+        </member>
+        <member name="M:Conduit.DataExtensions.AsLowerString(System.Object)">
+            <summary>
+            Returns a lower string version of an object
+            </summary>
+            <param name="value">The source value</param>
+            <returns>A lower string version of the value. If the provided object is null, returns String.Empty</returns>
+            <example><code>var lowerString = "LoWeR ThIs StRiNg";// result: "lower this string"</code></example>
+        </member>
+        <member name="M:Conduit.DataExtensions.Value``1(System.Data.IDataRecord,System.String,``0)">
+            <summary>
+            Extracts a non nulled Typed field from an <see cref="T:System.Data.IDataRecord"/>
+            </summary>
+            <typeparam name="T">The typed version of the field</typeparam>
+            <param name="record"></param>
+            <param name="name">The Name of the field</param>
+            <param name="defaultValue">The value to use in case of a null entry</param>
+            <returns>The field value typed to <typeparamref name="T"/></returns>
+        </member>
+        <member name="M:Conduit.DataExtensions.Value``1(System.Data.IDataRecord,System.Int32,``0)">
+            <summary>
+            Extracts a non nulled Typed field from an <see cref="T:System.Data.IDataRecord"/>
+            </summary>
+            <typeparam name="T">The typed version of the field</typeparam>
+            <param name="record"></param>
+            <param name="index">The index of the field the data is in</param>
+            <param name="defaultValue">The value to use in case of a null entry</param>
+            <returns>The field value typed to <typeparamref name="T"/></returns>
+        </member>
+        <member name="M:Conduit.DataExtensions.Value``1(System.Data.IDataRecord,System.Int32)">
+            <summary>
+            Extracts a non nulled Typed field from an <see cref="T:System.Data.IDataRecord"/>
+            </summary>
+            <typeparam name="T">The typed version of the field</typeparam>
+            <param name="record"></param>
+            <param name="index">The index of the field the data is in</param>
+            <returns>The field value typed to <typeparamref name="T"/></returns>
+        </member>
+        <member name="M:Conduit.DataExtensions.Value``1(System.Data.IDataRecord,System.String)">
+            <summary>
+            Extracts a non nulled Typed field from an <see cref="T:System.Data.IDataRecord"/>
+            </summary>
+            <typeparam name="T">The typed version of the field</typeparam>
+            <param name="record"></param>
+            <param name="name">The Name of the field</param>
+            <remarks>The method first checks for a direct cast to <typeparamref name="T"/>. Then if fails,
+            for Primitive types the method trys a TryParse call, and if to no avail attempts to use the Type Converters</remarks>
+            <exception cref="T:System.InvalidCastException">Thrown if the field cannot be cast or converted to <typeparamref name="T"/></exception>
+            <example>Use this feature in addition to the <seealso cref="M:Conduit.DataExtensions.Enumerate(System.Data.IDataReader)"/> method for simple linq queries:
+            <code>var items = from rec in DatabaseFactory.CreateDatabase().ExecuteReader("usp_command").Enumerate()
+                              select new {ID = rec.Value&lt;long&gt;("ContactId"), Name = rec.Value&lt;string&gt;("ContactName")}</code></example>
+            <returns>The field value typed to <typeparamref name="T"/></returns>
+        </member>
+        <member name="M:Conduit.DataExtensions.Enumerate(System.Data.IDataReader)">
+            <summary>
+            Allows enumeration of <see cref="T:System.Data.IDataRecord"/>s from an open <see cref="T:System.Data.IDataReader"/>
+            </summary>
+            <param name="reader">An open <see cref="T:System.Data.IDataReader"/> to enumerate</param>
+            <remarks>The method disposes the <paramref name="reader"/> when done</remarks>
+            <example>Use this method for accessung datarecords in a Linq form:
+            <code>var items = from rec in DatabaseFactory.CreateDatabase().ExecuteReader("usp_command").Enumerate()
+                              select new MyOject(rec);</code></example>
+            <returns>An enumerable set of DataRecords</returns>
+        </member>
+        <member name="M:Conduit.DataExtensions.Enumerate(System.Data.IDataReader,System.Boolean)">
+            <summary>
+            Allows enumeration of <see cref="T:System.Data.IDataRecord"/>s from an open <see cref="T:System.Data.IDataReader"/>
+            </summary>
+            <param name="reader">An open <see cref="T:System.Data.IDataReader"/> to enumerate</param>
+            <param name="disposeOnCompletion">If set to 'true' the reader will be disposed on completion</param>
+            <remarks>The method disposes the <paramref name="reader"/> when done if disposeOnCompletion is 'true'</remarks>
+            <example>Use this method for accessung datarecords in a Linq form:
+            <code>var items = from rec in DatabaseFactory.CreateDatabase().ExecuteReader("usp_command").Enumerate()
+                              select new MyOject(rec);</code></example>
+            <returns>An enumerable set of DataRecords</returns>
+        </member>
+        <member name="M:Conduit.DataExtensions.TryGetValue``3(System.Collections.Generic.IDictionary{``0,``1},``0,``2)">
+            <summary>
+            Extracts an item from a dictiornary and converts it to <typeparamref name="V"/>
+            </summary>
+            <typeparam name="K">The Dictionart's Key type</typeparam>
+            <typeparam name="T">The Dictionary's value type</typeparam>
+            <typeparam name="V">The return type</typeparam>
+            <param name="dict">Dictionary to extract from</param>
+            <param name="key">the key to lookup</param>
+            <param name="defaultValue">the default value to return if the value does not exist or is null</param>
+            <returns>A type velue</returns>
+        </member>
+        <member name="M:Conduit.DataExtensions.AsXml(System.Object)">
+            <summary>
+            Converts the current object to a <see cref="T:System.Xml.Linq.XDocument"/> object
+            </summary>
+            <param name="obj">the string to convert to the <see cref="T:System.Xml.Linq.XDocument"/> object</param>
+            <returns></returns>
+        </member>
+        <member name="M:Conduit.DataExtensions.AsXml(System.Object,System.String)">
+            <summary>
+            Converts the current object to a <see cref="T:System.Xml.Linq.XDocument"/> object
+            </summary>
+            <param name="obj">the string to convert to the <see cref="T:System.Xml.Linq.XDocument"/> object</param>
+            <param name="rootName"><see cref="T:System.Xml.Linq.XDocument"/> root name</param>
+            <returns></returns>
+        </member>
+        <member name="M:Conduit.DataExtensions.AsXml(System.Object,System.String,System.String)">
+            <summary>
+            Converts the current object to a <see cref="T:System.Xml.Linq.XDocument"/> object
+            </summary>
+            <param name="obj">the string to convert to the <see cref="T:System.Xml.Linq.XDocument"/> object</param>
+            <param name="rootName"><see cref="T:System.Xml.Linq.XDocument"/> root name</param>
+            <param name="rootNamespace"><see cref="T:System.Xml.Linq.XDocument"/> root namespace</param>
+            <returns></returns>
+        </member>
+        <member name="M:Conduit.DataExtensions.NullSafeEval``2(``0,System.Func{``0,``1})">
+            <summary>
+            Performs a null check on the object before performing the evaluator.
+            If the object is null, the returned value is null
+            </summary>
+            <typeparam name="T">type of object</typeparam>
+            <typeparam name="R">type of return value</typeparam>
+            <param name="o">object</param>
+            <param name="evaluator">function using object to return a value</param>
+            <returns><typeparamref name="R"/></returns>
+        </member>
+        <member name="M:Conduit.DataExtensions.NullSafeEval``2(``0,System.Func{``0,``1},``1)">
+            <summary>
+            Performs a null check on the object before performing the evaluator.
+            If the object is null, the returned value is <paramref name="defaultVal"/>
+            </summary>
+            <typeparam name="T">type of object</typeparam>
+            <typeparam name="R">type of return value</typeparam>
+            <param name="o">object</param>
+            <param name="evaluator">function using object to return a value</param>
+            <param name="defaultVal">Default value</param>
+            <returns>If o is null : <paramref name="defaultVal"/>, otherwise, the result of <paramref name="evaluator"/> on <paramref name="o"/></returns>
+        </member>
+        <member name="M:Conduit.DataExtensions.NotNullWithValues``2(System.Collections.Generic.IEnumerable{``0},System.Func{System.Collections.Generic.IEnumerable{``0},``1})">
+            <summary>
+            performs a null check and an is-not-empty check before performing <paramref name="evaluator"/> on <paramref name="o"/>
+            If one of the conditions fail, returns null
+            </summary>
+            <typeparam name="T">Type of enumarated element</typeparam>
+            <typeparam name="R">Return type of evaluator</typeparam>
+            <param name="o">Input enumeration</param>
+            <param name="evaluator">Function accepting <paramref name="o"/>, with return value of type <typeparamref name="R"/></param>
+            <returns><typeparamref name="R"/></returns>
+        </member>
+        <member name="M:Conduit.DataExtensions.NullSafeCollectionEval``2(System.Collections.Generic.IEnumerable{``0},System.Func{System.Collections.Generic.IEnumerable{``0},``1},``1)">
+            <summary>
+            performs a null check and an is-not-empty check before performing <paramref name="evaluator"/> on <paramref name="o"/>
+            If one of the conditions fail, returns <paramref name="defaultVal"/>
+            </summary>
+            <typeparam name="T">Type of enumarated element</typeparam>
+            <typeparam name="R">Return type of evaluator</typeparam>
+            <param name="o">Input enumeration</param>
+            <param name="defaultVal">Default value</param>
+            <param name="evaluator">Function accepting <paramref name="o"/>, with return value of type <typeparamref name="R"/></param>
+            <returns><typeparamref name="R"/></returns>
+        </member>
+        <member name="T:Conduit.GuidExtenders.Radix">
+            <summary>
+            Radix is a convertor class for converting numbers to different radices
+            e.g. display the number 1000 in base 16
+            </summary>
+        </member>
+        <member name="F:Conduit.GuidExtenders.Radix.digit">
+            <summary>
+            Lookup tables for strings
+            </summary>
+        </member>
+        <member name="F:Conduit.GuidExtenders.Radix.ErrRadixTooLarge1">
+            <summary>
+            Error Messages
+            </summary>
+        </member>
+        <member name="M:Conduit.GuidExtenders.Radix.CheckArg(System.Int64,System.Boolean)">
+            <summary>
+            CheckArg checks the arguments for the encoder and decoder calls
+            </summary>
+        </member>
+        <member name="M:Conduit.GuidExtenders.Radix.Encode(System.Int64,System.Int64)">
+            LONG CODE
+        </member>
+        <member name="M:Conduit.GuidExtenders.Radix.Encode(System.Int64,System.Int64,System.Boolean)">
+            <summary>
+            Encoder for a long to a string with the base [radix]. if sym is true
+            the number will be converted to a generic symbolic notation.
+            </summary>
+        </member>
+        <member name="M:Conduit.GuidExtenders.Radix.Decode(System.String,System.Int64,System.Int64@,System.Boolean)">
+            <summary>
+            Decoder for a string to a long with the base [radix]. if sym is true
+            the number will be converted from a generic symbolic notation.
+            </summary>
+        </member>
+        <member name="M:Conduit.GuidExtenders.Radix.Encode(System.Double,System.Int64)">
+            FLOATING POINT CODE
+        </member>
+        <member name="T:Conduit.ExpressionExtensions">
+            <summary>
+            Adds extensions to the LINQ to DB set
+            </summary>
+        </member>
+        <member name="M:Conduit.ExpressionExtensions.orderDirect``2(System.Linq.IQueryable{``0},System.String,System.Boolean)">
+            <summary>
+            The method extends the orderBy method of LINQ.
+            the method can get a field to orderby and create a query in Linq for it.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <typeparam name="K"></typeparam>
+            <param name="context">the query</param>
+            <param name="property">name of the property to order by</param>
+            <param name="desc">Desc or Asc</param>
+            <returns></returns>
+        </member>
+        <member name="M:Conduit.ExpressionExtensions.GetPropertyType``1(System.String)">
+            <summary>
+            The method return the Type of the given property
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="Property"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Conduit.ExpressionExtensions.OrderByProperty``1(System.Linq.IQueryable{``0},System.String,System.Boolean)">
+            <summary>
+            The method extends the orderBy method of LINQ.
+            the method can get a field to orderby and create a query in Linq for it.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <typeparam name="K"></typeparam>
+            <param name="context">the query</param>
+            <param name="property">name of the property to order by</param>
+            <param name="desc">Desc or Asc</param>
+            <returns></returns>
+        </member>
+        <member name="M:Conduit.CacheExtensions.GetOrAdd``2(Conduit.Common.Caching.CacheProvider{``1},``0,System.Func{``0,``1})">
+            <summary>
+            Attempts to extract a value from the cache provider, and if item does not exists, retrieves it and caches it
+            </summary>
+            <typeparam name="TKey">The cache key type</typeparam>
+            <typeparam name="TValue">The cached value type</typeparam>
+            <param name="cache">The cache provider</param>
+            <param name="key">The key of the item to lookup or retrieve</param>
+            <param name="retriever">a method for retieving the item</param>
+            <returns>The value retrieved</returns>
+        </member>
+        <member name="M:Conduit.CacheExtensions.GetOrAdd``2(Conduit.Common.Caching.CacheProvider{``1},``0,System.Func{``1})">
+            <summary>
+            Attempts to extract a value from the cache provider, and if item does not exists, retrieves it and caches it
+            </summary>
+            <typeparam name="TKey">The cache key type</typeparam>
+            <typeparam name="TValue">The cached value type</typeparam>
+            <param name="cache">The cache provider</param>
+            <param name="key">The key of the item to lookup or retrieve</param>
+            <param name="retriever">a method for retieving the item</param>
+            <returns>The value retrieved</returns>
+        </member>
+        <member name="T:Conduit.Common.Resources.ResourceLocation">
+            <summary>
+            Holds info for a resource on the server
+            </summary>
+        </member>
+        <member name="M:Conduit.Common.Resources.ResourceLocation.EnsureLocalDirExists">
+            <summary>
+            Ensures the <see cref="P:Conduit.Common.Resources.ResourceLocation.LocalUnc"/> directory exists on disk, and creates it if not
+            </summary>
+        </member>
+        <member name="P:Conduit.Common.Resources.ResourceLocation.PublicUrl">
+            <summary>
+            A url to a public version of the item
+            </summary>
+        </member>
+        <member name="P:Conduit.Common.Resources.ResourceLocation.LocalUnc">
+            <summary>
+            the local file system path
+            </summary>
+        </member>
+        <member name="M:Conduit.ResourceHelpers.AppRoot(Conduit.Common.Resources.ResourceLocation,System.Guid)">
+            <summary>
+            Returns an app base root location
+            </summary>
+            <param name="location"></param>
+            <param name="appId">The app id to get the root for</param>
+            <returns>A new <see cref="T:Conduit.Common.Resources.ResourceLocation"/></returns>
+        </member>
+        <member name="M:Conduit.ResourceHelpers.ModuleRoot(Conduit.Common.Resources.ResourceLocation,System.Guid)">
+            <summary>
+            Returns an module base root location
+            </summary>
+            <param name="location"></param>
+            <param name="appId">The module id to get the root for</param>
+            <returns>A new <see cref="T:Conduit.Common.Resources.ResourceLocation"/></returns>
+        </member>
+        <member name="M:Conduit.ResourceHelpers.Create(Conduit.Common.Resources.ResourceLocation,System.String,System.String)">
+            <summary>
+            Creates a resource location for a given type of resource
+            </summary>
+            <param name="location"></param>
+            <param name="type">The resource type</param>
+            <param name="originalFileName">The original file name to extract the extension from</param>
+            <returns></returns>
+        </member>
+        <member name="M:Conduit.ResourceHelpers.Combine(Conduit.Common.Resources.ResourceLocation,System.String)">
+            <summary>
+            Combines the location with the base location
+            </summary>
+            <param name="baseLocation"></param>
+            <param name="location"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Conduit.XmlExtensions.ElementValue(System.Xml.Linq.XElement,System.Xml.Linq.XName)">
+            <summary>
+            Returns the Value of the first element mathcing the given <paramref name="name"/>
+            </summary>
+            <param name="elem"></param>
+            <param name="name">The element name</param>
+            <returns></returns>
+        </member>
+        <member name="M:Conduit.XmlExtensions.AttributeValue(System.Xml.Linq.XElement,System.Xml.Linq.XName)">
+            <summary>
+            Returns the Value of the first attribute mathcing the given <paramref name="name"/>
+            </summary>
+            <param name="elem"></param>
+            <param name="name">The attribute name</param>
+            <returns></returns>
+        </member>
+        <member name="M:Conduit.XmlExtensions.GetAttributeValue``1(System.Xml.Linq.XElement,System.Xml.Linq.XName)">
+            <summary>
+            Returns a typed attribute value 
+            </summary>
+            <typeparam name="T">The target type</typeparam>
+            <param name="xmlNode"></param>
+            <param name="attributeName">The name of the attribute</param>
+        </member>
+        <member name="M:Conduit.XmlExtensions.GetAttributeValue``1(System.Xml.Linq.XElement,System.Xml.Linq.XName,``0)">
+            <summary>
+            Returns a typed attribute value 
+            </summary>
+            <typeparam name="T">The target type</typeparam>
+            <param name="xmlNode"></param>
+            <param name="attributeName">The name of the attribute</param>
+            <param name="defaultValue">the default value to return if the attribute was not found</param>
+            <returns></returns>
+        </member>
+        <member name="M:Conduit.XmlExtensions.GetElementValue``1(System.Xml.Linq.XElement,System.Xml.Linq.XName)">
+            <summary>
+            Returns a typed element value 
+            </summary>
+            <typeparam name="T">The target type</typeparam>
+            <param name="xmlNode"></param>
+            <param name="elementName">The name of the element</param>
+        </member>
+        <member name="M:Conduit.XmlExtensions.GetElementValue``1(System.Xml.Linq.XElement,System.Xml.Linq.XName,``0)">
+            <summary>
+            Returns a typed element value 
+            </summary>
+            <typeparam name="T">The target type</typeparam>
+            <param name="xmlNode"></param>
+            <param name="elementName">The name of the element</param>
+            <param name="defaultValue">the default value to return if the element was not found</param>
+        </member>
+        <member name="M:Conduit.XmlExtensions.GetXPathElementValue``1(System.Xml.Linq.XElement,System.String,System.Xml.IXmlNamespaceResolver,``0)">
+            <summary>
+            Returns a typed element value 
+            </summary>
+            <typeparam name="T">The target type</typeparam>
+            <param name="xmlNode"></param>
+            <param name="expression">The elements Xpath expression</param>
+            <param name="resolver">The Xml resolver to use for namespacing</param>
+            <param name="defaultValue">the default value to return if the element was not found</param>
+        </member>
+        <member name="M:Conduit.XmlExtensions.GetXPathValue``1(System.Xml.Linq.XElement,System.String,System.Xml.IXmlNamespaceResolver,``0)">
+            <summary>
+            Returns a typed value of an XPath expression
+            </summary>
+            <typeparam name="T">The target type</typeparam>
+            <param name="xmlNode"></param>
+            <param name="xPath">the xPath to validate</param>
+            <param name="defaultValue">the default value to return if the path was not found</param>
+            <returns></returns>
+        </member>
+        <member name="M:Conduit.XmlExtensions.GetNamespaceManager(System.Xml.Linq.XElement)">
+            <summary>
+            Creates a namespace manager populated with the namespace context of the given Element
+            </summary>
+            <param name="element">The element</param>
+        </member>
+        <member name="M:Conduit.DateExtensions.ToUnixTicks(System.DateTime)">
+            <summary>
+            method for converting a System.DateTime value to a UNIX Timestamp
+            </summary>
+            <param name="value">date to convert</param>
+            <returns></returns>
+        </member>
+        <member name="M:Conduit.DateExtensions.TimeAgo(System.DateTime)">
+            <summary>
+            Returns a text description for the time past since the current date
+            </summary>
+        </member>
+        <member name="F:Conduit.Common.Caching.CacheExpirationAction.Invalidate">
+            <summary>
+            The item is invalidated
+            </summary>
+        </member>
+        <member name="F:Conduit.Common.Caching.CacheExpirationAction.HitAndRun">
+            <summary>
+            the item should be served this once, but tested again the next hit
+            </summary>
+        </member>
+        <member name="F:Conduit.Common.Caching.CacheExpirationAction.ReCache">
+            <summary>
+            The item should be re-cached, and only tested the next time it expires
+            </summary>
+        </member>
+        <member name="M:Conduit.Common.Caching.CacheProvider`1.Add(System.String,`0,System.TimeSpan,System.EventHandler{Conduit.Common.Caching.CacheExpiredArgs{`0}})">
+            <summary>
+            Adds an item to the cache
+            </summary>
+            <param name="key">The key to save it with</param>
+            <param name="value">the item to add</param>
+            <param name="expiration">the time to expiration</param>
+            <param name="expiredAction">a callback method to invoke when the cache is expired</param>
+        </member>
+        <member name="M:Conduit.Common.Caching.CacheProvider`1.Flush">
+            <summary>
+            Removes all items from the cache. If an error occurs during the removal,
+            the cache is left unchanged.
+            </summary>
+            <remarks>
+            The CacheManager can be configured to use different storage mechanisms in
+            which to store the CacheItems.  Each of these storage mechanisms can throw
+            exceptions particular to their own implementations.</remarks>
+        </member>
+        <member name="T:Conduit.Common.TextTemplate">
+            <summary>
+            Holds a memory Text Template
+            </summary>
+        </member>
+        <member name="F:Conduit.Common.TextTemplate.commandQ">
+            <summary>
+            internal list of items
+            </summary>
+        </member>
+        <member name="M:Conduit.Common.TextTemplate.#ctor(System.String,System.String)">
+            <summary>
+            Creates a new memory template for an Text
+            </summary>
+            <param name="name">The name of the template</param>
+            <param name="command">The template command text</param>
+        </member>
+        <member name="M:Conduit.Common.TextTemplate.#ctor(System.String,System.String,System.String,Conduit.Common.TextTemplate.ParameterDefaultResolveOptions)">
+            <summary>
+            Creates a new memory template for an Text
+            </summary>
+            <param name="name">The name of the template</param>
+            <param name="command">The template command text</param>
+            <param name="templateExtractor">A Regex string for the template paramater (Group values are Name, Default)</param>
+            <param name="defaultResolver">defines how the template should resolve parameter default values</param>
+        </member>
+        <member name="M:Conduit.Common.TextTemplate.GetCommand(System.String[])">
+            <summary>
+            Returns the Command after inserting the parameters
+            </summary>
+            <param name="parameters">An even array of parameters built as name value pairs</param>
+            <returns></returns>
+        </member>
+        <member name="M:Conduit.Common.TextTemplate.GetCommandExact(System.String[])">
+            <summary>
+            Returns the Command after inserting the parameters
+            </summary>
+            <param name="parameters">A list of parameters in the same order as the template</param>
+            <returns></returns>
+        </member>
+        <member name="M:Conduit.Common.TextTemplate.GetCommand(System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Returns the Command after inserting the parameters
+            </summary>
+            <param name="parameters">A dictionary of parameter keys and their values</param>
+            <returns></returns>
+        </member>
+        <member name="P:Conduit.Common.TextTemplate.Name">
+            <summary>
+            The name of the Template
+            </summary>
+        </member>
+        <member name="P:Conduit.Common.TextTemplate.Parameters">
+            <summary>
+            Exposes a readolny enumarator to inspect the list of parameters
+            </summary>
+        </member>
+        <member name="T:Conduit.Common.TextTemplate.ParameterDefaultResolveOptions">
+            <summary>
+            Resolving types for parameter default values
+            </summary>
+        </member>
+        <member name="F:Conduit.Common.TextTemplate.ParameterDefaultResolveOptions.Unique">
+            <summary>
+            Each instance of a parameter is resolved to its explicit default
+            </summary>
+        </member>
+        <member name="F:Conduit.Common.TextTemplate.ParameterDefaultResolveOptions.FirstValue">
+            <summary>
+            The first default found for the parameter is used by all
+            </summary>
+        </member>
+        <member name="F:Conduit.Common.TextTemplate.ParameterDefaultResolveOptions.LastValue">
+            <summary>
+            The last default found is used by all
+            </summary>
+        </member>
+        <member name="T:Conduit.Common.TextTemplate.TemplateParameter">
+            <summary>
+            A Template parameter place holder
+            </summary>
+        </member>
+        <member name="M:Conduit.Common.TextTemplate.TemplateParameter.#ctor(System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="name"></param>
+            <param name="default"></param>
+        </member>
+        <member name="M:Conduit.Common.TextTemplate.TemplateParameter.GetValue(System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Returns the value of the parameter from the parameter list or the default
+            </summary>
+            <param name="parameters">A list of paramters</param>
+            <returns></returns>
+        </member>
+        <member name="P:Conduit.Common.TextTemplate.TemplateParameter.Name">
+            <summary>
+            The parameter name
+            </summary>
+        </member>
+        <member name="P:Conduit.Common.TextTemplate.TemplateParameter.Default">
+            <summary>
+            The paramters default value
+            </summary>
+        </member>
+        <member name="M:Conduit.StringHelper.FormatProperties``1(System.String,``0)">
+            <summary>
+            Formats a string using the properties of an Item
+            </summary>
+            <param name="format">The format string</param>
+            <param name="Item">The item to extract properties from</param>
+            <returns>A formated string</returns>
+            <remarks>The format sections are defined as {@PropertyName}</remarks>
+        </member>
+        <member name="M:Conduit.StringHelper.FormatProperties``1(System.String,``0,System.Boolean)">
+            <summary>
+            Formats a string using the properties of an Item
+            </summary>
+            <param name="format">The format string</param>
+            <param name="Item">The item to extract properties from</param>
+            <param name="jsEncode">Set to true to escape single quotes</param>
+            <returns>A formated string</returns>
+            <remarks>The format sections are defined as {@PropertyName}</remarks>
+        </member>
+        <member name="T:Conduit.Common.Web.QueryString">
+            <summary>
+            A chainable query string helper class.
+            Example usage :
+            string strQuery = QueryString.Current.Add("id", "179").ToString();
+            string strQuery = new QueryString().Add("id", "179").ToString();
+            </summary>
+        </member>
+        <member name="M:Conduit.Common.Web.QueryString.ExtractQuerystring(System.String)">
+            <summary>
+            extracts a querystring from a full URL
+            </summary>
+            <param name="s">the string to extract the querystring from</param>
+            <returns>a string representing only the querystring</returns>
+        </member>
+        <member name="M:Conduit.Common.Web.QueryString.FillFromString(System.String)">
+            <summary>
+            returns a querystring object based on a string
+            </summary>
+            <param name="s">the string to parse</param>
+            <returns>the QueryString object </returns>
+        </member>
+        <member name="M:Conduit.Common.Web.QueryString.FromCurrent">
+            <summary>
+            returns a QueryString object based on the current querystring of the request
+            </summary>
+            <returns>the QueryString object </returns>
+        </member>
+        <member name="M:Conduit.Common.Web.QueryString.Add(System.String,System.String)">
+            <summary>
+            add a name value pair to the collection
+            </summary>
+            <param name="name">the name</param>
+            <param name="value">the value associated to the name</param>
+            <returns>the QueryString object </returns>
+        </member>
+        <member name="M:Conduit.Common.Web.QueryString.Add(System.String,System.String,System.Boolean)">
+            <summary>
+            adds a name value pair to the collection
+            </summary>
+            <param name="name">the name</param>
+            <param name="value">the value associated to the name</param>
+            <param name="isUnique">true if the name is unique within the querystring. This allows us to override existing values</param>
+            <returns>the QueryString object </returns>
+        </member>
+        <member name="M:Conduit.Common.Web.QueryString.Remove(System.String)">
+            <summary>
+            removes a name value pair from the querystring collection
+            </summary>
+            <param name="name">name of the querystring value to remove</param>
+            <returns>the QueryString object</returns>
+        </member>
+        <member name="M:Conduit.Common.Web.QueryString.Reset">
+            <summary>
+            clears the collection
+            </summary>
+            <returns>the QueryString object </returns>
+        </member>
+        <member name="M:Conduit.Common.Web.QueryString.Contains(System.String)">
+            <summary>
+            checks if a name already exists within the query string collection
+            </summary>
+            <param name="name">the name to check</param>
+            <returns>a boolean if the name exists</returns>
+        </member>
+        <member name="M:Conduit.Common.Web.QueryString.ToString">
+            <summary>
+            outputs the querystring object to a string
+            </summary>
+            <returns>the encoded querystring as it would appear in a browser</returns>
+        </member>
+        <member name="P:Conduit.Common.Web.QueryString.Item(System.String)">
+            <summary>
+            overrides the default
+            </summary>
+            <param name="name"></param>
+            <returns>the associated decoded value for the specified name</returns>
+        </member>
+        <member name="P:Conduit.Common.Web.QueryString.Item(System.Int32)">
+            <summary>
+            overrides the default indexer
+            </summary>
+            <param name="index"></param>
+            <returns>the associated decoded value for the specified index</returns>
+        </member>
+        <member name="T:Conduit.Common.Services.ChannelPool`1">
+            <summary>
+            Helper class used to manage a pool of channels
+            </summary>
+            <typeparam name="T">The channel type</typeparam>
+        </member>
+        <member name="M:Conduit.Common.Services.ChannelPool`1.GetInstance">
+            <summary>
+            Gets an avilable instance of <typeparamref name="T"/> from the pool
+            or creates a new one if possible
+            </summary>
+            <exception cref="T:System.InvalidOperationException">Thrown if the pool was disposed while waiting for an available instance</exception>
+            <example>using(var svc = pool.GetInstance())
+            {
+                svc.Service.foo();
+            }</example>
+            <returns>A disposable IServicePoolItem[T] to use the service from in a using clause</returns>
+        </member>
+        <member name="T:Conduit.Common.ObjectCopier">
+            <summary>
+            Reference Article http://www.codeproject.com/KB/tips/SerializedObjectCloner.aspx
+            
+            Provides a method for performing a deep copy of an object.
+            Binary Serialization is used to perform the copy.
+            </summary>
+        </member>
+        <member name="M:Conduit.Common.ObjectCopier.Clone``1(``0)">
+            <summary>
+            Perform a deep Copy of the object.
+            </summary>
+            <typeparam name="T">The type of object being copied.</typeparam>
+            <param name="source">The object instance to copy.</param>
+            <returns>The copied object.</returns>
+        </member>
+        <member name="T:Conduit.ComparableExtensions">
+            <summary>
+            Extensions for comparison between objects
+            </summary>
+        </member>
+        <member name="M:Conduit.ComparableExtensions.Between``1(``0,``0,``0)">
+            <summary>
+            Checks if a comparable item is between the min (bigger or equal) and the max (smaller or equal)
+            </summary>
+            <param name="num"></param>
+            <param name="min"></param>
+            <param name="max"></param>
+            <returns>true if between, otherwise false</returns>
+        </member>
+        <member name="M:Conduit.Common.Services.SynchronizedQueue`1.CAS(Conduit.Common.Services.SynchronizedQueue{`0}.pointer_t@,Conduit.Common.Services.SynchronizedQueue{`0}.pointer_t,Conduit.Common.Services.SynchronizedQueue{`0}.pointer_t)">
+            <summary>
+            Compare And Swap
+            Interlocked Compare and Exchange operation
+            </summary>
+            <param name="destination"></param>
+            <param name="compared"></param>
+            <param name="exchange"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Conduit.Common.Services.SynchronizedQueue`1.node_t.#ctor">
+            <summary>
+            default constructor
+            </summary>
+        </member>
+        <member name="M:Conduit.Common.Services.SynchronizedQueue`1.pointer_t.#ctor(Conduit.Common.Services.SynchronizedQueue{`0}.pointer_t)">
+            <summary>
+            copy constructor
+            </summary>
+            <param name="p"></param>
+        </member>
+        <member name="M:Conduit.Common.Services.SynchronizedQueue`1.pointer_t.#ctor(Conduit.Common.Services.SynchronizedQueue{`0}.node_t,System.Int64)">
+            <summary>
+            constructor that allows caller to specify ptr and count
+            </summary>
+            <param name="node"></param>
+            <param name="c"></param>
+        </member>
+    </members>
+</doc>
